@@ -112,8 +112,10 @@ if(!empty($_POST['btn_submit'])){//btn_submitの値が空ではなかったら�
 <input type="hidden" name="csrf" value="<?php echo h($_POST['csrf']);?>">
 </form>
 <?php endif; ?>
-
 <?php endif; ?>
+
+
+
 
 <?php if($pageFlag === 2 ): ?>
 <?php if($_POST['csrf'] === $SESSION['csrfToken']) :?>  
@@ -174,7 +176,7 @@ $token = $_SESSION['csrfToken'];
             <input type="text" class="form-control" id="url" name="url" value="<?php if(!empty($_POST['url'])){echo h($_POST['url']);}?>">
         </div>
 
-        性別
+        性別 <br>
         <div class="form-check form-check-inline">
         <input type="radio" class="form-check-input" name="gender" id="gender1" value="0">
         <?php if(isset($_POST['gender']) && $_POST['gender']==='0') {echo 'checked';}?>
@@ -184,7 +186,7 @@ $token = $_SESSION['csrfToken'];
         <?php if(isset($_POST['gender']) && $_POST['gender']==='1') {echo 'checked';}?> 
        
         <label class="form-check-label" for="gender2">女性</label>
-        </div> 
+        </div> <br><br>
         <!--emptyは0でもtrueになるためNG-->
 
         <div class="form-group">

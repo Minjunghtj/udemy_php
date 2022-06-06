@@ -1,11 +1,15 @@
-<?php
+<?php //フォーム値をDBに保存
 
 // DB接続 PDO
 function insertContact($request){
+
+
+
 require 'db_connection.php';
 
 
-// 入力 DB保存 prepare, execute(配列(すべて文字列))
+// 入力 DB保存 prepare, execute(配列(すべて文字列)→ bindは不要)
+
 
 $params = [
     'id' => null,
@@ -17,6 +21,8 @@ $params = [
     'contact'=> $request['contact'],
     'created_at'=> null
 ];
+
+
 
 /*
 $params = [
@@ -30,6 +36,7 @@ $params = [
     'created_at'=> 'NOW()'
 ];
 */
+
 
 $count = 0;
 $columns = '';
@@ -46,11 +53,11 @@ foreach(array_keys($params) as $key){ // array=keys→ 連想配列の左側のk
 }
 
 $sql = 'insert into contacts ('. $columns . ')values('. $values .')'; //名前付きプレースホルダ(自由に変えれる状態)
+// insert into テーブル名
 
-var_dump($sql);
-
-$stmt = $pdo->prepare($sql);
+//var_dump($sql);
+$stmt = $pdo->prepare($sql);//prepareメソッド
 $stmt->execute($params); //実行
 
 }
-?>
+

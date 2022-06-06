@@ -17,7 +17,7 @@ function validation($request){ //$_POST連想配列が入って来る形にな�
     }
 
     if(!empty($request['url'])){
-        if(!filter_var($requeust['url'], FILTER_VALIDATE_URL)){
+        if(!filter_var($request['url'], FILTER_VALIDATE_URL)){
            $errors[] = '「メールアドレス」は必須です。正しい形式で入力してください。';
         }
     }
